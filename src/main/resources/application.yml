@@ -1,0 +1,29 @@
+server:
+  port: 7788
+spring:
+  datasource:
+    # 配置druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/order_db?useUnicode=true
+      username: root
+      password: 123456
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: 123456
+    database: 1
+    lettuce:
+      pool:
+        max-active: 8 #最大空闲连接数默认8
+        max-idle: 8 #最大连接数默认8
+        min-idle: 0 #最小空闲连接数默认0
+        max-wait: 100ms #最大等待时间
+logging:
+  level:
+    org.mybatis: debug
+mybatis-plus:
+  type-aliases-package: com.example.**.domain
+  mapper-locations: classpath*:mapper/**/*Mapper.xml,classpath*:com/example/**/mapper/*Mapper.xml
+  config-location: classpath:mybatis/mybatis-config.xml
